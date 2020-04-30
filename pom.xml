@@ -18,7 +18,7 @@
     </properties>
 
     <build>
-        <finalName>Devastating-Bot</finalName>
+        <finalName>Elo-Rechner</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
