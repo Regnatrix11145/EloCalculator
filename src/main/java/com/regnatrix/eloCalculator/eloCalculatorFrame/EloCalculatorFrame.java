@@ -2,7 +2,6 @@ package com.regnatrix.eloCalculator.eloCalculatorFrame;
 
 import javax.swing.*;
 import java.awt.*;
-import java.math.BigDecimal;
 
 /**
  * @author Regnatrix
@@ -75,12 +74,14 @@ public class EloCalculatorFrame extends JFrame {
     }
 
     private int calculateWinEloRate(float clanWhoLost , float clanWhoWon) {
-         int eloRate = (int) BigDecimal.valueOf(49 * (1 - (1 / (1 + Math.pow(10.0, (clanWhoLost / 400) - (clanWhoWon / 400))))))
-                .setScale(1 , BigDecimal.ROUND_HALF_UP)
-                .doubleValue();
+        double eloRate = 49 * (1 - (1 / (1 + Math.pow(10.0, (clanWhoLost / 400) - (clanWhoWon / 400)))));
          if (eloRate == 0)
              eloRate = 1;
-         return eloRate;
+         return round(5 , eloRate);
+    }
+
+    private int round(int round , double value) {
+        return (int) (Integer.parseInt(String.valueOf(String.valueOf(value).split("\\.")[1].charAt(0))) > round ? Math.ceil(value) : Math.floor(value));
     }
 
 }
