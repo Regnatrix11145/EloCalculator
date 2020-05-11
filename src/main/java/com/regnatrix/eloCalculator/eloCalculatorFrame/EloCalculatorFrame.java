@@ -75,7 +75,7 @@ public class EloCalculatorFrame extends JFrame {
 
     private int calculateWinEloRate(float clanWhoLost , float clanWhoWon) {
         double eloRate = 49 * (1 - (1 / (1 + Math.pow(10.0, (clanWhoLost / 400) - (clanWhoWon / 400)))));
-         if (eloRate == 0)
+         if (eloRate > 0 && eloRate < 1)
              eloRate = 1;
          return round(5 , eloRate);
     }
